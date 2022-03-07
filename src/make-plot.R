@@ -22,15 +22,6 @@ ggsave(filename = "out/git-usage.png",
        height = 7.4,
        width = 10.5,
        units = "cm")
-
-sink(file = "out/regression-summary.txt")
-summary(lm(percentage ~ year, data = sods_data))
-sink()
-
-sink(file = "out/package-versions.txt")
-sessionInfo()
-sink()
-
 g <- ggplot(
   data = sods_data,
   mapping = aes(x = year, y = percentage)) +
@@ -46,3 +37,12 @@ g <- ggplot(
     y = "Percentage who used git") +
   ylim(c(0,100)) +
   theme_bw() 
+
+sink(file = "out/regression-summary.txt")
+summary(lm(percentage ~ year, data = sods_data))
+sink()
+
+sink(file = "out/package-versions.txt")
+sessionInfo()
+sink()
+
